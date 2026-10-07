@@ -1,0 +1,185 @@
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+.app {
+  min-height: 100vh;
+  background: #1a1a1a;
+  color: white;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Загрузка */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #1a1a1a;
+  color: white;
+}
+.spinner {
+  width: 40px; height: 40px;
+  border: 4px solid #333;
+  border-top-color: #4ade80;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Хедер */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: #222;
+}
+.header h1 { font-size: 18px; margin: 0; color: #4ade80; }
+.avatar {
+  width: 36px; height: 36px;
+  background: #4ade80;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.settings {
+  background: none; border: none;
+  font-size: 20px; cursor: pointer;
+}
+
+/* Ферма */
+.farm { padding: 16px; text-align: center; }
+.balance {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; font-size: 36px; font-weight: bold;
+}
+.coin { font-size: 28px; }
+.label { color: #888; font-size: 12px; letter-spacing: 2px; margin: 4px 0 20px; }
+
+.level-bar {
+  background: #222;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+.level-info {
+  display: flex; justify-content: space-between;
+  font-size: 13px; margin-bottom: 8px;
+}
+.progress {
+  height: 8px; background: #333; border-radius: 4px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: #4ade80; transition: width 0.3s;
+}
+
+.tap-zone {
+  position: relative;
+  width: 220px; height: 220px;
+  margin: 20px auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2a2a2a, #1a1a1a);
+  border: 3px solid #4ade80;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s;
+}
+.tap-zone:active { transform: scale(0.96); }
+.hamster { font-size: 120px; }
+
+.floating-coin {
+  position: absolute;
+  font-size: 20px; font-weight: bold; color: #4ade80;
+  pointer-events: none;
+  animation: floatUp 0.8s ease-out forwards;
+}
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-80px); }
+}
+
+.stats {
+  display: flex; gap: 8px; margin: 20px 0;
+}
+.stat-box {
+  flex: 1; background: #222; border-radius: 12px;
+  padding: 10px 4px;
+}
+.stat-box.highlight { background: #2a3f2a; }
+.stat-label { font-size: 10px; color: #888; letter-spacing: 1px; }
+.stat-value { font-size: 16px; font-weight: bold; margin-top: 4px; color: #4ade80; }
+
+.share-btn {
+  width: 100%; padding: 14px;
+  background: #4ade80; border: none; border-radius: 12px;
+  font-size: 16px; font-weight: bold; color: #1a1a1a;
+  cursor: pointer;
+}
+
+/* Улучшения */
+.upgrades { padding: 16px; }
+.upgrades h2 { margin-top: 0; }
+.upgrade-card {
+  display: flex; align-items: center; gap: 12px;
+  background: #222; border-radius: 12px;
+  padding: 12px; margin-bottom: 10px;
+}
+.upgrade-icon { font-size: 32px; }
+.upgrade-info { flex: 1; }
+.upgrade-name { font-weight: bold; }
+.upgrade-desc { font-size: 12px; color: #888; }
+.upgrade-level { font-size: 11px; color: #4ade80; margin-top: 2px; }
+.buy-btn {
+  background: #4ade80; border: none; border-radius: 8px;
+  padding: 8px 12px; font-weight: bold; cursor: pointer;
+  color: #1a1a1a;
+}
+.buy-btn:disabled { background: #444; color: #888; cursor: not-allowed; }
+
+/* Задания */
+.tasks { padding: 16px; }
+.task-card {
+  display: flex; gap: 12px; align-items: center;
+  background: #222; border-radius: 12px;
+  padding: 16px; margin-bottom: 10px;
+  font-size: 24px;
+}
+.task-card > div > small { color: #888; font-size: 12px; }
+
+/* Профиль */
+.profile { padding: 16px; text-align: center; }
+.profile-card {
+  background: #222; border-radius: 16px; padding: 24px;
+  margin-bottom: 16px;
+}
+.profile-avatar {
+  font-size: 60px; margin-bottom: 8px;
+}
+.profile-name { font-size: 20px; font-weight: bold; }
+.profile-username { color: #888; font-size: 14px; }
+.profile-stats {
+  background: #222; border-radius: 12px; padding: 16px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+
+/* Навигация */
+.nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #222;
+  display: flex; justify-content: space-around;
+  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+  border-top: 1px solid #333;
+}
+.nav-btn {
+  flex: 1; background: none; border: none;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 8px 4px; cursor: pointer;
+  color: #888; font-size: 11px;
+  transition: color 0.2s;
+}
+.nav-btn.active { color: #4ade80; }
+.nav-icon { font-size: 22px; margin-bottom: 4px; }
+.nav-label { font-size: 11px; }
